@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <FrameLayout
+        android:id="@+id/TopMenu"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="#3F51B5"
@@ -15,6 +16,7 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/BottomMenu"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@color/teal_200"
@@ -23,13 +25,22 @@
     </FrameLayout>
 
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="500dp"
+        android:id="@+id/CentralMenu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#FFC107"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_default="spread"
+        app:layout_constraintHeight_default="spread"
+        app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
+        app:layout_constraintTop_toBottomOf="@+id/TopMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="50dp"
+
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
