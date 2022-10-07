@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SFProject</string>
+    <string name="disclaimer">Картинки взяты с https://www.imdb.com/</string>
 </resources>
