@@ -5,7 +5,4 @@
         android:angle="135">
 
     </gradient>
-
-    <corners android:radius="@dimen/corner_radius">
-    </corners>
 </shape>

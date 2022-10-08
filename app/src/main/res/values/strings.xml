@@ -6,4 +6,5 @@
     <string name="btn_watch_later">посмотреть позже</string>
     <string name="btn_settings">настройки</string>
     <string name="btn_collections">подборки</string>
+    <string name="page_title">Search it!</string>
 </resources>

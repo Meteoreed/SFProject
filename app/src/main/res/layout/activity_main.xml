@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <TextView
@@ -22,7 +23,7 @@
         android:id="@+id/TopMenu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/poster_height"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar_layout"
         app:cardCornerRadius="@dimen/corner_radius"
         android:layout_margin="@dimen/edge_margin"
         android:elevation="@dimen/elevation">
@@ -66,38 +67,36 @@
                 app:srcCompat="@drawable/evil_dead_poster" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <FrameLayout
-        android:id="@+id/BottomMenu"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/teal_200"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/CentralMenu"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/start_margin75"
-        android:layout_marginTop="@dimen/top_margin50"
-        android:layout_marginEnd="@dimen/start_margin75"
-        android:layout_marginBottom="@dimen/top_margin50"
-        android:background="@drawable/corner_background"
-        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
-        app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="spread"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TopMenu"
-        app:layout_constraintWidth_default="spread"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/page_title"
+            app:navigationIcon="@drawable/ic_round_menu_24"
+            app:menu="@menu/top_app_bar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
 
-        >
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_primary_dark"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_bar_menu"/>
 
         <Button
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/btn_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,6 +105,7 @@
             android:background="?selectableItemBackgroundBorderless"/>
 
         <Button
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/btn_favorite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,6 +114,7 @@
             android:background="?selectableItemBackgroundBorderless"/>
 
         <Button
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/btn_watch_later"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -122,6 +123,7 @@
             android:background="?selectableItemBackgroundBorderless"/>
 
         <Button
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/btn_collections"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -130,14 +132,12 @@
             android:background="?selectableItemBackgroundBorderless"/>
 
         <Button
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/btn_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_settings"
             android:textColor="@color/white"
             android:background="?selectableItemBackgroundBorderless"/>
-    </LinearLayout>
-
-
     />
 </androidx.constraintlayout.widget.ConstraintLayout>

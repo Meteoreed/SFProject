@@ -11,20 +11,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_menu.setOnClickListener {
-            Toast.makeText(this, "меню", Toast.LENGTH_SHORT).show()
+        topAppBar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.btn_settings -> {
+                    Toast.makeText(this, "настройки", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
         }
-        btn_collections.setOnClickListener {
-            Toast.makeText(this, "подборки", Toast.LENGTH_SHORT).show()
-        }
-        btn_favorite.setOnClickListener {
-            Toast.makeText(this, "избранное", Toast.LENGTH_SHORT).show()
-        }
-        btn_settings.setOnClickListener {
-            Toast.makeText(this, "настройки", Toast.LENGTH_SHORT).show()
-        }
-        btn_watch_later.setOnClickListener {
-            Toast.makeText(this, "посмотреть позже", Toast.LENGTH_SHORT).show()
+
+
+        bottom_navigation.setOnNavigationItemSelectedListener {
+
+            when (it.itemId) {
+                R.id.btn_favorite -> {
+                    Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.btn_watch_later -> {
+                    Toast.makeText(this, "Посмотреть позже", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.btn_collections -> {
+                    Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
         }
     }
 }
