@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">SFProject</string>
     <string name="disclaimer">Картинки взяты с https://www.imdb.com/</string>
+    <string name="btn_menu">меню</string>
+    <string name="btn_favorite">избранное</string>
+    <string name="btn_watch_later">посмотреть позже</string>
+    <string name="btn_settings">настройки</string>
+    <string name="btn_collections">подборки</string>
+    <string name="page_title">Search it!</string>
 </resources>

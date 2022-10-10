@@ -4,122 +4,140 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/disclaimer"
+        android:layout_margin="@dimen/edge_margin"
         android:autoLink="web"
         android:linksClickable="true"
-        android:layout_margin="@dimen/text_margin"
-        app:layout_constraintTop_toBottomOf="@+id/TopMenu"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/disclaimer"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TopMenu" />
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/TopMenu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/poster_height"
-        android:background="@color/teal_200"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar_layout"
+        app:cardCornerRadius="@dimen/corner_radius"
+        android:layout_margin="@dimen/edge_margin"
+        android:elevation="@dimen/elevation">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/teal_200">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@drawable/vampire_killers" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@drawable/What_we_do_in_the_shadows" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/pride_prejudice_zombie" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/evil_dead_poster" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@drawable/vampire_killers"
-            android:scaleType="centerCrop"
-            android:layout_weight="1"/>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/page_title"
+            app:navigationIcon="@drawable/ic_round_menu_24"
+            app:menu="@menu/top_app_bar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@drawable/What_we_do_in_the_shadows"
-            android:scaleType="centerCrop"
-            android:layout_weight="1"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/pridePrejudiceZombie"
-            android:scaleType="centerCrop"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/Evil_Dead_poster"
-            android:scaleType="centerCrop"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/BottomMenu"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/teal_200"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/CentralMenu"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/corner_background"
-        android:orientation="vertical"
-        android:layout_marginStart="@dimen/start_margin75"
-        android:layout_marginEnd="@dimen/start_margin75"
-        android:layout_marginBottom="@dimen/top_margin50"
-        android:layout_marginTop="@dimen/top_margin50"
-
-        app:layout_constraintWidth_default="spread"
-        app:layout_constraintHeight_default="spread"
-        app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
-        app:layout_constraintTop_toBottomOf="@+id/TopMenu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-
-        >
+        android:background="@color/design_default_color_primary_dark"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_bar_menu"/>
 
         <Button
-            android:id="@+id/button"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/btn_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btn_menu"
+            android:textColor="@color/white"
+            android:background="?selectableItemBackgroundBorderless"/>
 
         <Button
-            android:id="@+id/button2"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/btn_favorite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btn_favorite"
+            android:textColor="@color/white"
+            android:background="?selectableItemBackgroundBorderless"/>
 
         <Button
-            android:id="@+id/button3"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/btn_watch_later"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btn_watch_later"
+            android:textColor="@color/white"
+            android:background="?selectableItemBackgroundBorderless"/>
 
         <Button
-            android:id="@+id/button4"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/btn_collections"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btn_collections"
+            android:textColor="@color/white"
+            android:background="?selectableItemBackgroundBorderless"/>
 
         <Button
-            android:id="@+id/button5"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/btn_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
-    </LinearLayout>
-
-
-        />
+            android:text="@string/btn_settings"
+            android:textColor="@color/white"
+            android:background="?selectableItemBackgroundBorderless"/>
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>
