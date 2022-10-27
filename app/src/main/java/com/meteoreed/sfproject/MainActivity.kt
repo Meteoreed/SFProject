@@ -11,6 +11,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val filmDataBase = listOf(
+            Film("Coco",R.drawable.coco,"This should be a description"),
+            Film("Lord of the rings 1",R.drawable.fellowship,"This should be a description"),
+            Film("Lord of the rings 2",R.drawable.two_towers,"This should be a description"),
+            Film("Lord of the rings 3",R.drawable.lotr,"This should be a description"),
+            Film("Green mile",R.drawable.green_mile,"This should be a description"),
+            Film("Forest Gump",R.drawable.gump,"This should be a description"),
+            Film("Interstellar",R.drawable.interstellar,"This should be a description"),
+            Film("Intouchables",R.drawable.intouchables,"This should be a description"),
+            Film("Schindler's list",R.drawable.schindlers_list,"This should be a description"),
+            Film("Shawshank redemption",R.drawable.shawshank,"This should be a description"),
+        )
+
         topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.btn_settings -> {
