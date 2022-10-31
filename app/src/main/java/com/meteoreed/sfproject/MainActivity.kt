@@ -3,13 +3,17 @@ package com.meteoreed.sfproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var filmsAdapter: FilmListRecyclerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
         val filmDataBase = listOf(
             Film("Coco",R.drawable.coco,"This should be a description"),
@@ -53,5 +57,20 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+        main_recycler.apply {
+            filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
+                override fun click(film: Film, position: Int) {}
+            })
+
+            adapter = filmsAdapter
+
+            layoutManager = LinearLayoutManager(this@MainActivity)
+
+            val decorator = TopSpacingItemDecoration(8)
+            addItemDecoration(decorator)
+        }
+
+        filmsAdapter.addItems(filmDataBase)
     }
 }
