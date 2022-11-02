@@ -1,12 +1,11 @@
 package com.meteoreed.sfproject
 
 import android.view.LayoutInflater
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import kotlinx.android.synthetic.main.film_item.view.*
 
-class FilmListRecyclerAdapter(private val clickListener: OnClickListener) :
+class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val item = mutableListOf<Film>()
 
@@ -20,6 +19,9 @@ class FilmListRecyclerAdapter(private val clickListener: OnClickListener) :
         when (holder) {
             is FilmViewHolder -> {
                 holder.bind(item[position])
+                holder.itemView.item_container.setOnClickListener {
+                    clickListener.click(item[position])
+                }
             }
         }
     }
@@ -33,6 +35,6 @@ class FilmListRecyclerAdapter(private val clickListener: OnClickListener) :
     }
 
     interface OnItemClickListener {
-        fun click(film: Film)
+        abstract fun click(film: Film)
     }
 }

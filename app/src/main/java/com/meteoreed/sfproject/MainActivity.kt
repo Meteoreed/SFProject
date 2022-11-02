@@ -1,5 +1,6 @@
 package com.meteoreed.sfproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -60,7 +61,13 @@ class MainActivity : AppCompatActivity() {
 
         main_recycler.apply {
             filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
-                override fun click(film: Film, position: Int) {}
+                override fun click(film: Film) {
+                    val bundle = Bundle()
+                    bundle.putParcelable("film", film)
+                    val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                }
             })
 
             adapter = filmsAdapter
