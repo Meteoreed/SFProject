@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/coco" />
+                app:srcCompat="@drawable/adventure_time" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/lotr" />
+                app:srcCompat="@drawable/rick_morty" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1 "
-                app:srcCompat="@drawable/shawshank" />
+                app:srcCompat="@drawable/robot_chicken" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/gump" />
+                app:srcCompat="@drawable/love_death_robots" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
