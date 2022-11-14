@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,26 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_placeholder, HomeFragment())
+            .addToBackStack(null)
+            .commit()
+
+        fun launchDetailsFragment(film: Film){
+            val bundle = Bundle()
+            bundle.putParcelable("film",film)
+            val fragment = DetailsFragment()
+            fragment.arguments = bundle
+
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_placeholder, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
 
 
 
@@ -64,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                 override fun click(film: Film) {
                     val bundle = Bundle()
                     bundle.putParcelable("film", film)
-                    val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+                    val intent = Intent(this@MainActivity, DetailsFragment::class.java)
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }
