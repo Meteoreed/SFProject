@@ -9,6 +9,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
+// Все сломалось так много раз, что я уже отчаялся делать что-либо
+
 class MainActivity : AppCompatActivity() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
