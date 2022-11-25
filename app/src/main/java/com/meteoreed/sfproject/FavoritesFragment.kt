@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoritesFragment : Fragment() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -33,5 +34,4 @@ class FavoritesFragment : Fragment() {
         }
         filmsAdapter.addItems(favoritesList)
     }
-
 }
