@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<dimen name="edge_margin">10dp</dimen>
-    <dimen name="poster_height">200dp</dimen>
-    <dimen name="poster_height1">100dp</dimen>
-    <dimen name="poster_width">150dp</dimen>
+    <dimen name="edge_margin10dp">10dp</dimen>
+    <dimen name="layout_margin16dp">16dp</dimen>
+    <dimen name="poster_height200dp">200dp</dimen>
+    <dimen name="poster_height100dp">100dp</dimen>
+    <dimen name="poster_width150dp">150dp</dimen>
     <dimen name="start_margin75">75dp</dimen>
     <dimen name="top_margin50">50dp</dimen>
-    <dimen name="corner_radius">15dp</dimen>
-    <dimen name="elevation">5dp</dimen>
+    <dimen name="corner_radius15dp">15dp</dimen>
+    <dimen name="elevation5dp">5dp</dimen>
     <dimen name="padding_8dp">8dp</dimen>
     <dimen name="levitation_1dp">1dp</dimen>
     <dimen name="min_height_60dp">60dp</dimen>
