@@ -23,18 +23,19 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
 
-        fun launchDetailsFragment(film: Film){
-            val bundle = Bundle()
-            bundle.putParcelable("film",film)
-            val fragment = DetailsFragment()
-            fragment.arguments = bundle
-
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_placeholder, fragment)
-                .addToBackStack(null)
-                .commit()
         }
+
+    fun launchDetailsFragment(film: Film){
+        val bundle = Bundle()
+        bundle.putParcelable("film",film)
+        val fragment = DetailsFragment()
+        fragment.arguments = bundle
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_placeholder, fragment)
+            .addToBackStack(null)
+            .commit()
 
 
 
@@ -67,7 +68,11 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.btn_favorite -> {
-                    Toast.makeText(this, R.string.btn_favorite, Toast.LENGTH_SHORT).show()
+                   supportFragmentManager
+                       .beginTransaction()
+                       .replace(R.id.fragment_placeholder, FavoritesFragment())
+                       .addToBackStack(null)
+                       .commit()
                     true
                 }
                 R.id.btn_watch_later -> {
