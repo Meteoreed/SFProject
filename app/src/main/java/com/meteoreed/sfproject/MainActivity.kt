@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -42,25 +43,46 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener {
 
             when (it.itemId) {
+
+                R.id.home -> {
+                    val tag = "home"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment(fragment ?: HomeFragment(), tag)
+                    true
+                }
+
                 R.id.btn_favorite -> {
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_placeholder, FavoritesFragment())
-                        .addToBackStack(null)
-                        .commit()
+                    val tag = "favorites"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment( fragment?: FavoritesFragment(), tag)
                     true
                 }
                 R.id.btn_watch_later -> {
-                    Toast.makeText(this, R.string.btn_watch_later, Toast.LENGTH_SHORT).show()
+                    val tag = "watch_later"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment( fragment?: WatchLaterFragment(), tag)
                     true
                 }
                 R.id.btn_collections -> {
-                    Toast.makeText(this, R.string.btn_collections, Toast.LENGTH_SHORT).show()
+                    val tag = "watch_later"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment( fragment?: WatchLaterFragment(), tag)
                     true
                 }
                 else -> false
             }
         }
+    }
+
+    private fun checkFragmentExistence(tag: String): Fragment? =
+        supportFragmentManager.findFragmentByTag(tag)
+
+    private fun changeFragment(fragment: Fragment, tag: String) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_placeholder, fragment, tag)
+            .addToBackStack(null)
+            .commit()
     }
 }
 

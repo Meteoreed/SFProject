@@ -20,7 +20,7 @@ import java.util.*
 class HomeFragment : Fragment() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
 
-    private val filmDataBase = listOf(
+    private val filmsDataBase = listOf(
         Film("Coco", R.drawable.coco, "This should be a description"),
         Film("Lord of the rings 1", R.drawable.fellowship, "This should be a description"),
         Film("Lord of the rings 2", R.drawable.two_towers, "This should be a description"),
@@ -32,6 +32,10 @@ class HomeFragment : Fragment() {
         Film("Schindler's list", R.drawable.schindlers_list, "This should be a description"),
         Film("Shawshank redemption", R.drawable.shawshank, "This should be a description"),
     )
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,17 +47,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val scene = Scene.getSceneForLayout(home_fragment_root, R.layout.merge_home_screen_content, requireContext())
-        val searchSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
-        val recyclerSlide = Slide(Gravity.BOTTOM).addTarget(R.id.main_recycler)
-        val customTransition = TransitionSet().apply {
-            duration = 500
-            addTransition(searchSlide)
-            addTransition(recyclerSlide)
-        }
+        AnimationHelper.performFragmentCircularRevealAnimation(home_fragment_root, requireActivity(), 1)
 
-        TransitionManager.go(scene, customTransition)
+        initSearchView()
 
+        initRecycler()
+        filmsAdapter.addItems(filmsDataBase)
+    }
+
+    private fun initSearchView() {
         search_view.setOnClickListener {
             search_view.isIconified = false
         }
@@ -63,12 +65,14 @@ class HomeFragment : Fragment() {
                 return true
             }
 
+            //Этот метод отрабатывает на каждое изменения текста
             override fun onQueryTextChange(newText: String): Boolean {
+                //Если ввод пуст то вставляем в адаптер всю БД
                 if (newText.isEmpty()) {
-                    filmsAdapter.addItems(filmDataBase)
+                    filmsAdapter.addItems(filmsDataBase)
                     return true
                 }
-                val result = filmDataBase.filter {
+                val result = filmsDataBase.filter {
                     it.title.toLowerCase(Locale.getDefault())
                         .contains(newText.toLowerCase(Locale.getDefault()))
                 }
@@ -76,9 +80,6 @@ class HomeFragment : Fragment() {
                 return true
             }
         })
-
-        initRecycler()
-        filmsAdapter.addItems(filmDataBase)
     }
 
     private fun initRecycler() {
@@ -95,6 +96,7 @@ class HomeFragment : Fragment() {
             addItemDecoration(decorator)
         }
     }
+
 }
 
 
