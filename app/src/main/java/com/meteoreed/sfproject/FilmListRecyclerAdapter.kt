@@ -9,6 +9,8 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val item = mutableListOf<Film>()
 
+    override fun getItemCount() = item.size
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return FilmViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.film_item, parent, false)
@@ -26,8 +28,6 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
         }
     }
 
-    override fun getItemCount() = item.size
-
     fun addItems(list: List<Film>) {
         item.clear()
         item.addAll(list)
@@ -35,6 +35,6 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
     }
 
     interface OnItemClickListener {
-        abstract fun click(film: Film)
+        fun click(film: Film)
     }
 }

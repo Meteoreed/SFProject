@@ -8,14 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
-
-// Все сломалось так много раз, что я уже отчаялся делать что-либо
-
 class MainActivity : AppCompatActivity() {
-    private lateinit var filmsAdapter: FilmListRecyclerAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        initNavigation()
 
         supportFragmentManager
             .beginTransaction()
@@ -23,11 +22,11 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
 
-        }
+    }
 
-    fun launchDetailsFragment(film: Film){
+    fun launchDetailsFragment(film: Film) {
         val bundle = Bundle()
-        bundle.putParcelable("film",film)
+        bundle.putParcelable("film", film)
         val fragment = DetailsFragment()
         fragment.arguments = bundle
 
@@ -36,43 +35,19 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_placeholder, fragment)
             .addToBackStack(null)
             .commit()
+    }
 
-
-
-
-        val filmDataBase = listOf(
-            Film("Coco",R.drawable.coco,"This should be a description"),
-            Film("Lord of the rings 1",R.drawable.fellowship,"This should be a description"),
-            Film("Lord of the rings 2",R.drawable.two_towers,"This should be a description"),
-            Film("Lord of the rings 3",R.drawable.lotr,"This should be a description"),
-            Film("Green mile",R.drawable.green_mile,"This should be a description"),
-            Film("Forest Gump",R.drawable.gump,"This should be a description"),
-            Film("Interstellar",R.drawable.interstellar,"This should be a description"),
-            Film("Intouchables",R.drawable.intouchables,"This should be a description"),
-            Film("Schindler's list",R.drawable.schindlers_list,"This should be a description"),
-            Film("Shawshank redemption",R.drawable.shawshank,"This should be a description"),
-        )
-
-        topAppBar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.btn_settings -> {
-                    Toast.makeText(this, R.string.btn_settings, Toast.LENGTH_SHORT).show()
-                    true
-                }
-                else -> false
-            }
-        }
-
+    private fun initNavigation() {
 
         bottom_navigation.setOnNavigationItemSelectedListener {
 
             when (it.itemId) {
                 R.id.btn_favorite -> {
-                   supportFragmentManager
-                       .beginTransaction()
-                       .replace(R.id.fragment_placeholder, FavoritesFragment())
-                       .addToBackStack(null)
-                       .commit()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_placeholder, FavoritesFragment())
+                        .addToBackStack(null)
+                        .commit()
                     true
                 }
                 R.id.btn_watch_later -> {
@@ -86,26 +61,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
-        main_recycler.apply {
-            filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
-                override fun click(film: Film) {
-                    val bundle = Bundle()
-                    bundle.putParcelable("film", film)
-                    val intent = Intent(this@MainActivity, DetailsFragment::class.java)
-                    intent.putExtras(bundle)
-                    startActivity(intent)
-                }
-            })
-
-            adapter = filmsAdapter
-
-            layoutManager = LinearLayoutManager(this@MainActivity)
-
-            val decorator = TopSpacingItemDecoration(8)
-            addItemDecoration(decorator)
-        }
-
-        filmsAdapter.addItems(filmDataBase)
     }
 }
+
