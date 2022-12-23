@@ -6,6 +6,19 @@
     android:layout_height="@dimen/poster_width150dp"
     android:elevation="@dimen/levitation_1dp"
     app:cardCornerRadius="@dimen/corner_radius15dp">
+    
+    <com.meteoreed.sfproject.RatingDonutView
+        android:id="@+id/rating_donut"
+        android:layout_width="@dimen/donut_size_50dp"
+        android:layout_height="@dimen/donut_size_50dp"
+        android:translationZ="@dimen/edge_margin10dp"
+        app:stroke="10"
+        app:progress="50"
+        android:layout_gravity="bottom|left"
+        app:layout_constraintTop_toTopOf = "parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_container"

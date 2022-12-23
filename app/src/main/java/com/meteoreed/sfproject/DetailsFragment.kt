@@ -47,7 +47,7 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setFilmsDetails() {
-        val film = arguments?.get("film") as Film
+        film = arguments?.get("film") as Film
 
         details_toolbar.title = film.title
         details_poster.setImageResource(film.poster)
