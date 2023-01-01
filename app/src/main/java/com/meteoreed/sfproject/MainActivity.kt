@@ -1,13 +1,9 @@
 package com.meteoreed.sfproject
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,22 +47,22 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.btn_favorite -> {
+                R.id.favorite -> {
                     val tag = "favorites"
                     val fragment = checkFragmentExistence(tag)
                     changeFragment( fragment?: FavoritesFragment(), tag)
                     true
                 }
-                R.id.btn_watch_later -> {
+                R.id.watch_later -> {
                     val tag = "watch_later"
                     val fragment = checkFragmentExistence(tag)
                     changeFragment( fragment?: WatchLaterFragment(), tag)
                     true
                 }
-                R.id.btn_collections -> {
-                    val tag = "watch_later"
+                R.id.collections -> {
+                    val tag = "selections"
                     val fragment = checkFragmentExistence(tag)
-                    changeFragment( fragment?: WatchLaterFragment(), tag)
+                    changeFragment( fragment?: SelectionsFragment(), tag)
                     true
                 }
                 else -> false

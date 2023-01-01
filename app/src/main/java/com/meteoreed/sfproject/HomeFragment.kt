@@ -21,16 +21,16 @@ class HomeFragment : Fragment() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
 
     private val filmsDataBase = listOf(
-        Film("Coco", R.drawable.coco, "This should be a description"),
-        Film("Lord of the rings 1", R.drawable.fellowship, "This should be a description"),
-        Film("Lord of the rings 2", R.drawable.two_towers, "This should be a description"),
-        Film("Lord of the rings 3", R.drawable.lotr, "This should be a description"),
-        Film("Green mile", R.drawable.green_mile, "This should be a description"),
-        Film("Forest Gump", R.drawable.gump, "This should be a description"),
-        Film("Interstellar", R.drawable.interstellar, "This should be a description"),
-        Film("Intouchables", R.drawable.intouchables, "This should be a description"),
-        Film("Schindler's list", R.drawable.schindlers_list, "This should be a description"),
-        Film("Shawshank redemption", R.drawable.shawshank, "This should be a description"),
+        Film("Coco", R.drawable.coco, "This should be a description", 5.8f),
+        Film("Lord of the rings 1", R.drawable.fellowship, "This should be a description", 7.4f),
+        Film("Lord of the rings 2", R.drawable.two_towers, "This should be a description", 7f),
+        Film("Lord of the rings 3", R.drawable.lotr, "This should be a description", 8.2f),
+        Film("Green mile", R.drawable.green_mile, "This should be a description", 6.3f),
+        Film("Forest Gump", R.drawable.gump, "This should be a description", 6.2f),
+        Film("Interstellar", R.drawable.interstellar, "This should be a description", 5.5f),
+        Film("Intouchables", R.drawable.intouchables, "This should be a description", 7.6f),
+        Film("Schindler's list", R.drawable.schindlers_list, "This should be a description", 8.5f),
+        Film("Shawshank redemption", R.drawable.shawshank, "This should be a description", 8.4f),
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,9 +65,7 @@ class HomeFragment : Fragment() {
                 return true
             }
 
-            //Этот метод отрабатывает на каждое изменения текста
             override fun onQueryTextChange(newText: String): Boolean {
-                //Если ввод пуст то вставляем в адаптер всю БД
                 if (newText.isEmpty()) {
                     filmsAdapter.addItems(filmsDataBase)
                     return true
