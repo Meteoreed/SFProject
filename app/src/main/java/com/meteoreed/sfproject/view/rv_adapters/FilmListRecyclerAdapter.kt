@@ -1,8 +1,11 @@
-package com.meteoreed.sfproject
+package com.meteoreed.sfproject.view.rv_adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.meteoreed.sfproject.R
+import com.meteoreed.sfproject.domain.Film
+import com.meteoreed.sfproject.view.fragments.FilmViewHolder
 import kotlinx.android.synthetic.main.film_item.view.*
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :

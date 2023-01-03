@@ -1,37 +1,38 @@
-package com.meteoreed.sfproject
+package com.meteoreed.sfproject.view.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import android.transition.Scene
-import android.transition.Slide
-import android.transition.TransitionManager
-import android.transition.TransitionSet
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.meteoreed.sfproject.R
+import com.meteoreed.sfproject.databinding.FragmentHomeBinding
+import com.meteoreed.sfproject.domain.Film
+import com.meteoreed.sfproject.utils.AnimationHelper
+import com.meteoreed.sfproject.view.MainActivity
+import com.meteoreed.sfproject.view.rv_adapters.FilmListRecyclerAdapter
+import com.meteoreed.sfproject.view.rv_adapters.TopSpacingItemDecoration
+import com.meteoreed.sfproject.viewmodel.HomeFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.merge_home_screen_content.*
 import java.util.*
 
 class HomeFragment : Fragment() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
+    private lateinit var binding: FragmentHomeBinding
+    private val viewModel by lazy {
+        ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
+    }
+    private var filmsDataBase = listOf<Film>()
+        set(value) {
+            if (field == value) return
+            field = value
+            filmsAdapter.addItems(value)
+        }
 
-    private val filmsDataBase = listOf(
-        Film("Coco", R.drawable.coco, "This should be a description", 5.8f),
-        Film("Lord of the rings 1", R.drawable.fellowship, "This should be a description", 7.4f),
-        Film("Lord of the rings 2", R.drawable.two_towers, "This should be a description", 7f),
-        Film("Lord of the rings 3", R.drawable.lotr, "This should be a description", 8.2f),
-        Film("Green mile", R.drawable.green_mile, "This should be a description", 6.3f),
-        Film("Forest Gump", R.drawable.gump, "This should be a description", 6.2f),
-        Film("Interstellar", R.drawable.interstellar, "This should be a description", 5.5f),
-        Film("Intouchables", R.drawable.intouchables, "This should be a description", 7.6f),
-        Film("Schindler's list", R.drawable.schindlers_list, "This should be a description", 8.5f),
-        Film("Shawshank redemption", R.drawable.shawshank, "This should be a description", 8.4f),
-    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
@@ -41,18 +42,27 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        AnimationHelper.performFragmentCircularRevealAnimation(home_fragment_root, requireActivity(), 1)
+        AnimationHelper.performFragmentCircularRevealAnimation(
+            home_fragment_root,
+            requireActivity(),
+            1
+        )
 
         initSearchView()
 
         initRecycler()
         filmsAdapter.addItems(filmsDataBase)
+
+        viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
+            filmsDataBase = it
+        })
     }
 
     private fun initSearchView() {

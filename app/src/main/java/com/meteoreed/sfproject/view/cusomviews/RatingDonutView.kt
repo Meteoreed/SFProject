@@ -1,4 +1,4 @@
-package com.meteoreed.sfproject
+package com.meteoreed.sfproject.view.cusomviews
 
 import android.content.Context
 import android.graphics.Canvas
@@ -8,6 +8,7 @@ import android.graphics.RectF
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.View
+import com.meteoreed.sfproject.R
 
 class RatingDonutView @JvmOverloads constructor(
     context: Context,

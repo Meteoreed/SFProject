@@ -7,7 +7,7 @@
     android:elevation="@dimen/levitation_1dp"
     app:cardCornerRadius="@dimen/corner_radius15dp">
     
-    <com.meteoreed.sfproject.RatingDonutView
+    <com.meteoreed.sfproject.view.cusomviews.RatingDonutView
         android:id="@+id/rating_donut"
         android:layout_width="@dimen/donut_size_50dp"
         android:layout_height="@dimen/donut_size_50dp"

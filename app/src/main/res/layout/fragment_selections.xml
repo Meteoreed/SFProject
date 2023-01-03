@@ -4,7 +4,7 @@
     android:id="@+id/fragment_selections_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelectionsFragment"
+    tools:context=".view.fragments.SelectionsFragment"
     android:visibility="invisible"
     tools:visibility="visible"
     android:background="@drawable/favorite_background">
