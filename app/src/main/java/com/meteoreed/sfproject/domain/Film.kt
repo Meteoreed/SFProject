@@ -1,4 +1,4 @@
-package com.meteoreed.sfproject
+package com.meteoreed.sfproject.domain
 
 import android.media.Rating
 import android.os.Parcelable

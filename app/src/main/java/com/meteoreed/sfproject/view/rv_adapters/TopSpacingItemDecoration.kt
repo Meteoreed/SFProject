@@ -1,4 +1,4 @@
-package com.meteoreed.sfproject
+package com.meteoreed.sfproject.view.rv_adapters
 
 import android.content.res.Resources
 import android.graphics.Rect

@@ -1,4 +1,4 @@
-package com.meteoreed.sfproject
+package com.meteoreed.sfproject.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meteoreed.sfproject.databinding.FragmentFavoritesBinding
+import com.meteoreed.sfproject.domain.Film
+import com.meteoreed.sfproject.utils.AnimationHelper
+import com.meteoreed.sfproject.view.MainActivity
+import com.meteoreed.sfproject.view.rv_adapters.FilmListRecyclerAdapter
+import com.meteoreed.sfproject.view.rv_adapters.TopSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoritesFragment : Fragment() {

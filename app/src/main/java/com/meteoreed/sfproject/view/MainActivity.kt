@@ -1,11 +1,12 @@
-package com.meteoreed.sfproject
+package com.meteoreed.sfproject.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
+import com.meteoreed.sfproject.R
 import com.meteoreed.sfproject.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
+import com.meteoreed.sfproject.domain.Film
+import com.meteoreed.sfproject.view.fragments.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
