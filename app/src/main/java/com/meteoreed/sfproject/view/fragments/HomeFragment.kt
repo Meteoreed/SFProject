@@ -22,7 +22,8 @@ import java.util.*
 
 class HomeFragment : Fragment() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
-    private lateinit var binding: FragmentHomeBinding
+    private var binding: FragmentHomeBinding? = null
+    private val binding1 get() = binding!!
     private val viewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
     }
@@ -43,7 +44,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding1.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
