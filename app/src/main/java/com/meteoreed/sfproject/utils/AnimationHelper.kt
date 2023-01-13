@@ -1,4 +1,4 @@
-package com.meteoreed.sfproject
+package com.meteoreed.sfproject.utils
 
 import android.app.Activity
 import android.view.View
