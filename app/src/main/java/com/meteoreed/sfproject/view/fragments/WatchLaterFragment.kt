@@ -10,15 +10,15 @@ import com.meteoreed.sfproject.utils.AnimationHelper
 import kotlinx.android.synthetic.main.fragment_watch_later.*
 
 class WatchLaterFragment : Fragment() {
-    private var binding: FragmentWatchLaterBinding? = null
-    private val binding1 get() = binding!!
+    private var _binding: FragmentWatchLaterBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentWatchLaterBinding.inflate(inflater, container, false)
-        return binding1.root
+        _binding = FragmentWatchLaterBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

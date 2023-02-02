@@ -15,8 +15,8 @@ import com.meteoreed.sfproject.view.rv_adapters.TopSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoritesFragment : Fragment() {
-    private var binding: FragmentFavoritesBinding? = null
-    private val binding1 get() = binding!!
+    private var _binding: FragmentFavoritesBinding? = null
+    private val binding get() = _binding!!
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
 
     override fun onCreateView(
@@ -24,8 +24,8 @@ class FavoritesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFavoritesBinding.inflate(inflater, container, false)
-        return binding1.root
+        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +38,7 @@ class FavoritesFragment : Fragment() {
             1
         )
 
-        binding!!.favoritesRecycler.apply {
+        _binding!!.favoritesRecycler.apply {
             filmsAdapter =
                 FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
                     override fun click(film: Film) {

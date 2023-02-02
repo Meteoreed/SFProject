@@ -14,16 +14,17 @@ import com.meteoreed.sfproject.domain.Film
 import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
-    private var binding: FragmentDetailsBinding? = null
-    private val binding1 get() = binding!!
+    private var _binding: FragmentDetailsBinding? = null
+    private val binding
+        get() = _binding!!
     private lateinit var film: Film
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailsBinding.inflate(inflater, container, false)
-        return binding1.root
+        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,7 +32,7 @@ class DetailsFragment : Fragment() {
 
         setFilmsDetails()
 
-        details_fab_favorites.setOnClickListener{
+        details_fab_favorites.setOnClickListener {
             if (!film.isInFavorites) {
                 details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_24)
                 film.isInFavorites = true
@@ -61,7 +62,7 @@ class DetailsFragment : Fragment() {
         Glide.with(this)
             .load(ApiConstants.IMAGES_URL + "780" + film.poster)
             .centerCrop()
-            .into(binding!!.detailsPoster)
+            .into(binding.detailsPoster)
 
         details_fab_favorites.setImageResource(
             if (film.isInFavorites) R.drawable.ic_baseline_favorite_24

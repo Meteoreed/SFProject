@@ -2,15 +2,21 @@ package com.meteoreed.sfproject.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import com.meteoreed.sfproject.App
 import com.meteoreed.sfproject.domain.Film
 import com.meteoreed.sfproject.domain.Interactor
+import javax.inject.Inject
 
 class HomeFragmentViewModel : ViewModel() {
-    val filmsListLiveData:  MutableLiveData<List<Film>> = MutableLiveData()
-    private var interactor: Interactor = App.instance.interactor
+
+    val filmsListLiveData: MutableLiveData<List<Film>> = MutableLiveData()
+
+    @Inject
+    lateinit var interactor: Interactor
 
     init {
+        App.instance.dagger.inject(this)
         interactor.getFilmsFromApi(1, object : ApiCallback {
             override fun onSuccess(films: List<Film>) {
                 filmsListLiveData.postValue(films)
@@ -20,6 +26,7 @@ class HomeFragmentViewModel : ViewModel() {
             }
         })
     }
+
 
     interface ApiCallback {
         fun onSuccess(films: List<Film>)

@@ -9,7 +9,6 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.meteoreed.sfproject.R
 import com.meteoreed.sfproject.databinding.FragmentHomeBinding
 import com.meteoreed.sfproject.domain.Film
 import com.meteoreed.sfproject.utils.AnimationHelper
@@ -22,8 +21,8 @@ import java.util.*
 
 class HomeFragment : Fragment() {
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
-    private var binding: FragmentHomeBinding? = null
-    private val binding1 get() = binding!!
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private val viewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
     }
@@ -43,8 +42,8 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding1.root
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
