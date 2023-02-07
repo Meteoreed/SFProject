@@ -1,18 +1,16 @@
 package com.meteoreed.sfproject
 
 import android.app.Application
-import com.meteoreed.sfproject.data.MainRepository
-import com.meteoreed.sfproject.domain.Interactor
+import com.meteoreed.sfproject.di.AppComponent
+import com.meteoreed.sfproject.di.DaggerAppComponent
 
-class App: Application() {
-    lateinit var repo: MainRepository
-    lateinit var interactor: Interactor
+class App : Application() {
+    lateinit var dagger: AppComponent
 
     override fun onCreate() {
         super.onCreate()
         instance = this
-        repo = MainRepository()
-        interactor = Interactor(repo)
+        dagger = DaggerAppComponent.create()
     }
 
     companion object {
@@ -20,3 +18,4 @@ class App: Application() {
         private set
     }
 }
+

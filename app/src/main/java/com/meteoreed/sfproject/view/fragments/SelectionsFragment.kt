@@ -10,13 +10,14 @@ import com.meteoreed.sfproject.utils.AnimationHelper
 import kotlinx.android.synthetic.main.fragment_selections.*
 
 class SelectionsFragment : Fragment() {
-    private lateinit var binding: FragmentSelectionsBinding
+    private var _binding: FragmentSelectionsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSelectionsBinding.inflate(inflater, container, false)
+        _binding = FragmentSelectionsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
