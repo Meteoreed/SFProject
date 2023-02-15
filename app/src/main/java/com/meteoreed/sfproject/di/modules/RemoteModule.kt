@@ -15,12 +15,11 @@ import javax.inject.Singleton
 
 @Module
 class RemoteModule {
-    private val TIMEOUT = 30L
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
-        .callTimeout(TIMEOUT, TimeUnit.SECONDS)
-        .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+        .callTimeout(Companion.TIMEOUT, TimeUnit.SECONDS)
+        .readTimeout(Companion.TIMEOUT, TimeUnit.SECONDS)
         .addInterceptor(HttpLoggingInterceptor().apply {
             if (BuildConfig.DEBUG) {
                 level = HttpLoggingInterceptor.Level.BASIC
@@ -39,4 +38,8 @@ class RemoteModule {
     @Provides
     @Singleton
     fun provideTmdbApi(retrofit: Retrofit): TmdbApi = retrofit.create(TmdbApi::class.java)
+
+    companion object {
+        private const val TIMEOUT = 30L
+    }
 }
