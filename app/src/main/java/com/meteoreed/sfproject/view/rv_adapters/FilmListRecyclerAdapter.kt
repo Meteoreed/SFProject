@@ -10,9 +10,9 @@ import kotlinx.android.synthetic.main.film_item.view.*
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val item = mutableListOf<Film>()
+    internal val items = mutableListOf<Film>()
 
-    override fun getItemCount() = item.size
+    override fun getItemCount() = items.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return FilmViewHolder(
@@ -23,17 +23,17 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is FilmViewHolder -> {
-                holder.bind(item[position])
+                holder.bind(items[position])
                 holder.itemView.item_container.setOnClickListener {
-                    clickListener.click(item[position])
+                    clickListener.click(items[position])
                 }
             }
         }
     }
 
     fun addItems(list: List<Film>) {
-        item.clear()
-        item.addAll(list)
+        items.clear()
+        items.addAll(list)
         notifyDataSetChanged()
     }
 

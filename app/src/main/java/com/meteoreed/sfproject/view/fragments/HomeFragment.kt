@@ -56,13 +56,22 @@ class HomeFragment : Fragment() {
         )
 
         initSearchView()
+        initPullToRefresh()
 
         initRecycler()
-        filmsAdapter.addItems(filmsDataBase)
 
         viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
             filmsDataBase = it
+            filmsAdapter.addItems(it)
         })
+    }
+
+    private fun initPullToRefresh() {
+        binding.pullToRefresh.setOnRefreshListener {
+            filmsAdapter.items.clear()
+            viewModel.getFilms()
+            binding.pullToRefresh.isRefreshing = false
+        }
     }
 
     private fun initSearchView() {
@@ -104,7 +113,6 @@ class HomeFragment : Fragment() {
             addItemDecoration(decorator)
         }
     }
-
 }
 
 

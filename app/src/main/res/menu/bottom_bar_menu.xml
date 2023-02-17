@@ -20,4 +20,10 @@
         android:icon="@drawable/ic_baseline_watch_later"
         android:title="@string/btn_watch_later"
         app:showAsAction="withText" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_round_settings_24"
+        android:title="@string/btn_settings"
+        app:showAsAction="withText">
+    </item>
 </menu>
