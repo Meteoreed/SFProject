@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.meteoreed.sfproject.R
 import com.meteoreed.sfproject.databinding.ActivityMainBinding
-import com.meteoreed.sfproject.domain.Film
+import com.meteoreed.sfproject.data.Entity.Film
 import com.meteoreed.sfproject.view.fragments.*
 
 class MainActivity : AppCompatActivity() {

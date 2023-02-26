@@ -1,8 +1,7 @@
 package com.meteoreed.sfproject.utils
 
-import android.location.Location.convert
 import com.meteoreed.sfproject.data.Entity.TmdbFilm
-import com.meteoreed.sfproject.domain.Film
+import com.meteoreed.sfproject.data.Entity.Film
 
 object Converter {
     fun convertApiListToDtoList(list: List<TmdbFilm>?): List<Film>{

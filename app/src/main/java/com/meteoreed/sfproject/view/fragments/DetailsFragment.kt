@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.meteoreed.sfproject.R
 import com.meteoreed.sfproject.data.ApiConstants
 import com.meteoreed.sfproject.databinding.FragmentDetailsBinding
-import com.meteoreed.sfproject.domain.Film
+import com.meteoreed.sfproject.data.Entity.Film
 import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {

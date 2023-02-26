@@ -9,4 +9,5 @@
     <dimen name="levitation_1dp">1dp</dimen>
     <dimen name="min_height_60dp">60dp</dimen>
     <dimen name="donut_size_50dp">50dp</dimen>
+    <dimen name="progress_bar_size_100dp">100dp</dimen>
 </resources>

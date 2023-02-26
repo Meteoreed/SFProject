@@ -17,7 +17,7 @@ class PreferenceProvider(context: Context) {
     fun saveDefaultCategory(category: String) {
         preference.edit { putString(KEY_DEFAULT_CATEGORY, category) }
     }
-    fun getDefaultCategory(): String? {
+    fun getDefaultCategory(): String {
         return preference.getString(KEY_DEFAULT_CATEGORY, DEFAULT_CATEGORY) ?: DEFAULT_CATEGORY
     }
     companion object {
