@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meteoreed.sfproject.databinding.FragmentFavoritesBinding
-import com.meteoreed.sfproject.domain.Film
+import com.meteoreed.sfproject.data.Entity.Film
 import com.meteoreed.sfproject.utils.AnimationHelper
 import com.meteoreed.sfproject.view.MainActivity
 import com.meteoreed.sfproject.view.rv_adapters.FilmListRecyclerAdapter

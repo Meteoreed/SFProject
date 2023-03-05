@@ -1,10 +1,10 @@
-package com.meteoreed.sfproject.view.fragments
+package com.meteoreed.sfproject.view.rv_viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.meteoreed.sfproject.data.ApiConstants
-import com.meteoreed.sfproject.domain.Film
+import com.meteoreed.sfproject.data.Entity.Film
 import kotlinx.android.synthetic.main.film_item.view.*
 
 class FilmViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {

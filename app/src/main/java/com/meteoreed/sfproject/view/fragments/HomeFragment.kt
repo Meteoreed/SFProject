@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meteoreed.sfproject.databinding.FragmentHomeBinding
-import com.meteoreed.sfproject.domain.Film
+import com.meteoreed.sfproject.data.Entity.Film
 import com.meteoreed.sfproject.utils.AnimationHelper
 import com.meteoreed.sfproject.view.MainActivity
 import com.meteoreed.sfproject.view.rv_adapters.FilmListRecyclerAdapter
@@ -63,6 +64,10 @@ class HomeFragment : Fragment() {
         viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
             filmsDataBase = it
             filmsAdapter.addItems(it)
+        })
+
+        viewModel.showProgressBar.observe(viewLifecycleOwner, Observer<Boolean> {
+            binding.progressBar.isVisible = it
         })
     }
 
