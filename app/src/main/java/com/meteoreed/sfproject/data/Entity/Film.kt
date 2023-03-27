@@ -8,13 +8,19 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
+private const val TITLE = "title"
+private const val CACHED_FILMS = "cached_films"
+private const val POSTER = "poster"
+private const val OVERVIEW = "overview"
+private const val VOTE_AVERAGE = "vote_average"
+
 @Parcelize
-@Entity (tableName = "cached_films", indices = [Index(value = ["title"], unique = true)])
+@Entity (tableName = CACHED_FILMS, indices = [Index(value = [TITLE], unique = true)])
 data class Film (
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "poster") val poster: String,
-    @ColumnInfo(name = "overview") val description: String,
-    @ColumnInfo(name = "vote_average") val rating: Double = 0.0,
+    @ColumnInfo(name = TITLE) val title: String,
+    @ColumnInfo(name = POSTER) val poster: String,
+    @ColumnInfo(name = OVERVIEW) val description: String,
+    @ColumnInfo(name = VOTE_AVERAGE) val rating: Double = 0.0,
     var isInFavorites: Boolean = false
         ) : Parcelable
