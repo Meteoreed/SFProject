@@ -6,8 +6,11 @@ import androidx.lifecycle.ViewModel
 import com.meteoreed.sfproject.App
 import com.meteoreed.sfproject.data.Entity.Film
 import com.meteoreed.sfproject.domain.Interactor
-import java.nio.channels.Channel
-import java.util.concurrent.Flow
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeFragmentViewModel : ViewModel() {

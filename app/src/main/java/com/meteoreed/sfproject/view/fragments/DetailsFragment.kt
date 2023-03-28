@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
@@ -26,6 +27,7 @@ import com.meteoreed.sfproject.R
 import com.meteoreed.sfproject.data.ApiConstants
 import com.meteoreed.sfproject.databinding.FragmentDetailsBinding
 import com.meteoreed.sfproject.data.Entity.Film
+import com.meteoreed.sfproject.viewmodel.DetailsFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.coroutines.*
 import java.net.URL
@@ -35,6 +37,7 @@ class DetailsFragment : Fragment() {
     private val binding
         get() = _binding!!
     private lateinit var film: Film
+    private val viewModel: DetailsFragmentViewModel by viewModels()
     private val scope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreateView(
@@ -47,20 +50,19 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setFilmsDetails()
 
-        details_fab_favorites.setOnClickListener {
+        binding.detailsFabFavorites.setOnClickListener {
             if (!film.isInFavorites) {
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_24)
+                binding.detailsFabFavorites.setImageResource(R.drawable.ic_baseline_favorite_24)
                 film.isInFavorites = true
             } else {
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                binding.detailsFabFavorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 film.isInFavorites = false
             }
         }
 
-        details_fab_share.setOnClickListener {
+        binding.detailsFabShare.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
             intent.putExtra(
@@ -69,6 +71,10 @@ class DetailsFragment : Fragment() {
             )
             intent.type = "text/plain"
             startActivity(Intent.createChooser(intent, "Share To:"))
+        }
+
+        binding.detailsFabDownloadWp.setOnClickListener {
+            performAsyncLoadOfPoster()
         }
     }
 
